@@ -68,7 +68,12 @@ nnoremap <S-Tab> :bprevious<CR>
 " Coc bindings
 nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>do <Plug>(coc-codeaction)
-nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> <leader>d :<C-u>CocList diagnostics<cr>
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
 " Find files and find in files
 nnoremap <silent> <Leader>f :Files<CR>

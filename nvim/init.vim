@@ -31,6 +31,8 @@ Plug 'preservim/nerdcommenter'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sleuth'
 
 call plug#end()
 
@@ -65,16 +67,6 @@ nnoremap <leader>ct :tabclose<CR>
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
-" Coc bindings
-nmap <leader>rn <Plug>(coc-rename)
-nmap <leader>do <Plug>(coc-codeaction)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gr <Plug>(coc-references)
-nnoremap <silent> <leader>d :<C-u>CocList diagnostics<cr>
-nmap <silent> [d <Plug>(coc-diagnostic-prev)
-nmap <silent> ]d <Plug>(coc-diagnostic-next)
-
 " Find files and find in files
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <C-f> :Rg<CR>
@@ -98,7 +90,38 @@ let g:gitgutter_sign_removed = '-'
 let g:gitgutter_sign_removed_first_line = '-'
 let g:gitgutter_sign_modified_removed = '-'
 
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
 
+
+" Coc configs
+set updatetime=300
+set shortmess+=c
+inoremap <silent><expr> <c-space> coc#refresh()
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>do <Plug>(coc-codeaction)
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+nnoremap <silent> <leader>d :<C-u>CocList diagnostics<cr>
+
+function! s:show_documentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction

@@ -5,7 +5,7 @@ set shiftwidth=2
 set smarttab
 set softtabstop=2
 set mouse=a
-"set paste
+set hidden
 
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -40,7 +40,8 @@ set t_Co=256
 syntax on
 "colorscheme dracula
 let g:airline_powerline_fonts = 1
-"let g:airline_theme = 'dracula'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 let mapleader = ","
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -60,12 +61,12 @@ autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTa
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
-nnoremap <leader>nt :tabnew<CR>
-nnoremap <leader>ct :tabclose<CR>
+nnoremap <silent> <leader>nt :tabnew<CR>
+nnoremap <silent> <leader>ct :tabclose<CR>
 
 " Cycle through buffers (files)
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
+nnoremap <silent> <Tab> :bnext<CR>
+nnoremap <silent> <S-Tab> :bprevious<CR>
 
 " Find files and find in files
 nnoremap <silent> <Leader>f :Files<CR>

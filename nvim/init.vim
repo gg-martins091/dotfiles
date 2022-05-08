@@ -33,6 +33,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'dhruvasagar/vim-prosession'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 

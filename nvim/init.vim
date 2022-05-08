@@ -22,7 +22,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = ['coc-eslint', 'coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
 Plug 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
-Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -34,6 +33,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-commentary'
 Plug 'dhruvasagar/vim-prosession'
 Plug 'jiangmiao/auto-pairs'
 
@@ -167,3 +167,5 @@ nmap <CR> o<Esc>
 
 " Allow ctrl c to copy on visual mode
 vmap <C-C> "+y
+
+let g:AutoPairsFlyMode = 1

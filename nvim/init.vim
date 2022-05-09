@@ -177,3 +177,6 @@ vmap <C-x> d<Esc>i
 map <C-v> pi
 imap <C-v> <Esc>pi
 imap <C-z> <Esc>ui
+
+" Esc to remove search highlight
+map <esc> :noh <CR>

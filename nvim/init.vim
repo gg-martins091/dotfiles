@@ -1,4 +1,5 @@
 set number
+set relativenumber
 set autoindent
 set tabstop=2
 set shiftwidth=2
@@ -37,7 +38,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-commentary'
 Plug 'dhruvasagar/vim-prosession'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
@@ -165,7 +166,7 @@ map <right> <nop>
 let g:prosession_dir = '~/.config/vim_sessions/'
 
 " Insert new line and exit insert mode
-nmap <CR> o<Esc>
+" nmap <CR> o<Esc>
 
 let g:AutoPairsFlyMode = 1
 

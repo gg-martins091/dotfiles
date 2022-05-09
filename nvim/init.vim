@@ -167,13 +167,11 @@ let g:prosession_dir = '~/.config/vim_sessions/'
 " Insert new line and exit insert mode
 nmap <CR> o<Esc>
 
-" Allow ctrl c to copy on visual mode
-vmap <C-C> "+y
-
 let g:AutoPairsFlyMode = 1
 
 " Editing keybinds
-vmap <C-c> y<Esc>i
+" vmap <C-c> y<Esc>i
+vmap <C-C> "+y
 vmap <C-x> d<Esc>i
 map <C-v> pi
 imap <C-v> <Esc>pi

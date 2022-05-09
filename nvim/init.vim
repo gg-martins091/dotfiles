@@ -10,6 +10,8 @@ set nocompatible
 set ssop-=options
 set ignorecase
 set smartcase
+set keymodel=startsel,stopsel
+
 
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -169,3 +171,10 @@ nmap <CR> o<Esc>
 vmap <C-C> "+y
 
 let g:AutoPairsFlyMode = 1
+
+" Editing keybinds
+vmap <C-c> y<Esc>i
+vmap <C-x> d<Esc>i
+map <C-v> pi
+imap <C-v> <Esc>pi
+imap <C-z> <Esc>ui

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo apt install fonts-powerline
-ln -s -f ./nvim ~/.config/nvim
+sudo apt install fonts-powerline ripgrep
+ln -s -f ~/dotfiles/nvim ~/.config/nvim
 ln -s ./terminator/config ~/.config/terminator/config
 

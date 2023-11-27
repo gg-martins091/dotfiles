@@ -14,6 +14,7 @@ set smartcase
 set keymodel=startsel,stopsel
 
 
+
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	autocmd VimEnter * PlugInstall
@@ -22,7 +23,7 @@ endif
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-eslint', 'coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+let g:coc_global_extensions = ['coc-pyright', 'coc-eslint', 'coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
 Plug 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
@@ -44,7 +45,12 @@ call plug#end()
 
 set termguicolors
 syntax on
-colorscheme gruvbox
+" colorscheme gruvbox
+
+hi Pmenu guibg=#1d3357 guifg=white
+hi PmenuSel guibg=gray guifg=black
+hi PmenuThumb guibg=#585858
+hi PmenuSbar guibg=#bcbcbc
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -63,7 +69,7 @@ else
   let g:airline_section_z = airline#section#create(['obsession', 'linenr', 'colnr'])
 endif
 
-
+autocmd BufNew,BufRead *.asm set ft=nasm
 
 let mapleader = ","
 

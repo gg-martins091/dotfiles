@@ -1,7 +1,23 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+#ANDROID STUDIO
+# JAVA_HOME=$(dirname $( readlink -f $(which java) ))
+# JAVA_HOME=$(realpath "$JAVA_HOME"/../)
+# export JAVA_HOME
+
+# export ANDROID_HOME=$HOME/Android
+# export PATH=$PATH:$ANDROID_HOME/emulator
+# export PATH=$PATH:$ANDROID_HOME/cmdline-tools/tools:$PATH
+# export PATH=$PATH:$ANDROID_HOME/cmdline-tools/tools/bin:$PATH
+# export PATH=$PATH:$ANDROID_HOME/platform-tools:$PATH
+
+# export WSL_HOST=$(tail -1 /etc/resolv.conf | cut -d' ' -f2)
+# export ADB_SERVER_SOCKET=tcp:$WSL_HOST:5037
+#ANDROID STUDIO
+
 # Path to your oh-my-zsh installation.
+export PATH="$PATH:/usr/local/i386elfgcc/bin"
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:/usr/local/go/bin:/opt/jmeter/bin
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
@@ -108,5 +124,12 @@ export NVM_DIR="$HOME/.nvm"
 stty start undef
 stty stop undef
 setopt noflowcontrol
+ulimit -Sn 4096
 
 source ~/perl5/perlbrew/etc/bashrc
+if [ "$TMUX" = "" ]; then tmux; fi
+export PYTHONPATH=$PYTHONPATH:~/teenygrad:~/tinygrad:~/mygrad
+export PATH="$PATH:/usr/local/cuda/bin:/opt/nvim-linux64/bin"
+
+alias vim="nvim"
+

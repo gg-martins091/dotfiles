@@ -92,6 +92,48 @@ vim.api.nvim_set_keymap('i', '<C-z>', '<Esc>u', {noremap = true})
 -- Clear search highlighting with ESC
 vim.api.nvim_set_keymap('', '<esc>', ':noh<CR>', {noremap = true, silent = true})
 
+-- Rename
+vim.api.nvim_set_keymap('n', '<leader>rn', '<Plug>(coc-rename)', {silent = true})
+
+-- Code action
+vim.api.nvim_set_keymap('n', '<leader>do', '<Plug>(coc-codeaction)', {silent = true})
+
+-- Apply codeAction to the selected region
+vim.api.nvim_set_keymap('x', '<leader>a', '<Plug>(coc-codeaction-selected)', {silent = true})
+vim.api.nvim_set_keymap('n', '<leader>a', '<Plug>(coc-codeaction-selected)', {silent = true})
+
+-- CocList diagnostics
+vim.api.nvim_set_keymap('n', '<leader>g', ':<C-u>CocList diagnostics<CR>', {noremap = true, silent = true})
+
+-- coc#refresh
+vim.api.nvim_set_keymap('i', '<c-space>', 'coc#refresh()', {silent = true, expr = true, noremap = true})
+
+-- -- Navigate diagnostics
+vim.api.nvim_set_keymap('n', '[g', '<Plug>(coc-diagnostic-prev)', {silent = true})
+vim.api.nvim_set_keymap('n', ']g', '<Plug>(coc-diagnostic-next)', {silent = true})
+
+-- -- GoTo code navigation
+vim.api.nvim_set_keymap('n', 'gd', '<Plug>(coc-definition)', {silent = true})
+vim.api.nvim_set_keymap('n', 'gy', '<Plug>(coc-type-definition)', {silent = true})
+vim.api.nvim_set_keymap('n', 'gi', '<Plug>(coc-implementation)', {silent = true})
+vim.api.nvim_set_keymap('n', 'gr', '<Plug>(coc-references)', {silent = true})
+
+-- Show documentation
+vim.cmd [[
+function! s:show_documentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+]]
+
+-- vim.api.nvim_set_keymap('n', 'K', ':call ShowDocumentation()<CR>', {silent = true, noremap = true})
+
+
 
 local vim_plug_path = vim.fn.stdpath('data') .. '/site/autoload/plug.vim'
 if vim.fn.empty(vim.fn.glob(vim_plug_path)) > 0 then
@@ -112,7 +154,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'bluz71/vim-nightfly-colors', { 'as': 'nightfly' }
+"Plug 'bluz71/vim-nightfly-colors', { 'as': 'nightfly' }
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -122,12 +164,27 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-commentary'
+Plug 'f-person/git-blame.nvim'
 Plug 'dhruvasagar/vim-prosession'
 " Add more plugins as needed
 
 call plug#end()
 ]]
 
+vim.g.coc_global_extensions = {
+  'coc-clangd',
+  'coc-pyright',
+  'coc-eslint',
+  'coc-tsserver',
+  'coc-emmet',
+  'coc-css',
+  'coc-html',
+  'coc-json',
+  'coc-yank',
+  'coc-prettier'
+}
+
+
 -- Lua initialization file
-vim.cmd [[colorscheme nightfly]]
+-- vim.cmd [[colorscheme nightfly]]
 require('plugins')

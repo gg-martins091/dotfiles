@@ -7,6 +7,7 @@
     "typescriptreact",
     "json"
   ],
+  // "clangd.compilationDatabasePath": "/home/gabriel/mit/61810-2023/xv6-labs-2023"
   // "languageserver": {
   //    "clangd": {
   //      "command": "clangd",

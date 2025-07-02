@@ -1,0 +1,21 @@
+set-option -g default-terminal 'screen-256color'
+set-option -sg escape-time 0
+# set-option -sa terminal-overrides 'xterm-256color'
+set -g history-limit 10000
+set -g mouse on
+
+
+# Use vim keybindings in copy mode
+setw -g mode-keys vi
+
+# Setup 'v' to begin selection as in Vim
+bind -T copy-mode-vi v send -X begin-selection
+
+# Use y or ctrl + c
+bind -T copy-mode-vi y send -X copy-pipe-and-cancel "pbcopy"
+bind -T copy-mode-vi C-c send -X copy-pipe-and-cancel "pbcopy"
+
+
+# Update default binding of `Enter` to also use copy-pipe
+unbind -T copy-mode-vi Enter
+bind -T copy-mode-vi Enter send -X copy-pipe-and-cancel "pbcopy"

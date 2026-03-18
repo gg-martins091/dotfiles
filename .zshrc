@@ -133,3 +133,18 @@ export PATH="$PATH:/usr/local/cuda/bin:/opt/nvim-linux64/bin"
 
 alias vim="nvim"
 
+git() {
+  if [ "$1" = "push" ]; then
+    for arg in "$@"; do
+      if [ "$arg" = "--force" ] || [ "$arg" = "-f" ]; then
+        printf "You are about to run a force push. Continue? [y/N] "
+        read ans
+        case "$ans" in
+          yes|YES) break ;;
+          *) echo "Aborted."; return 1 ;;
+        esac
+      fi
+    done
+  fi
+  command git "$@"
+}
